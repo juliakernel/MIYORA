@@ -3,7 +3,7 @@ import isDev from "@/utils/isDev";
 import {
   MAX_STORAGE_TOKENS,
   TimestampedPrompt,
-} from "../amicaLife/eventHandler";
+} from "../MIYORALife/eventHandler";
 import { Message } from "../chat/messages";
 
 export const configUrl = new URL(

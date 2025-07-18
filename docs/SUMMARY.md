@@ -1,21 +1,21 @@
 # Table of Contents
 
-* [Welcome to Amica!](welcome.md)
+* [Welcome to MIYORA!](welcome.md)
 
 ## 🌸 Overview
 
-* [How Amica Works](./overview/how-amica-works.md)
+* [How MIYORA Works](./overview/how-MIYORA-works.md)
 * [Core Features](./overview/core-features.md)
-* [Amica Life](./overview/amica-life.md)
+* [MIYORA Life](./overview/MIYORA-life.md)
 * [Emotion System](./overview/emotion-system.md)
 * [Other Features](./overview/other-features.md)
 * [Use Cases](./overview/use-cases.md)
-* [Amica vs Other Tools](./overview/amica-vs-other-tools.md)
+* [MIYORA vs Other Tools](./overview/MIYORA-vs-other-tools.md)
 
 ## 🌳 Getting Started
 
 * [Quickstart Guide](./getting-started/quickstart.md)
-* [Installing Amica](./getting-started/installation.md)
+* [Installing MIYORA](./getting-started/installation.md)
 * [Next Steps](./getting-started/next-steps.md)
 
 ## 🗣️ Connecting LLMs (Your Core AI Chatbot Model)
@@ -55,7 +55,7 @@
 ## 🧩 Plugin System 
 
 * [Plugins Intro](./plugin-system/plugin-intro.md)
-* [Getting Real World News on Amica](./plugin-system/news-example.md)
+* [Getting Real World News on MIYORA](./plugin-system/news-example.md)
 
 ## 🔌 API System
 
@@ -67,9 +67,9 @@
 * [Creating new Avatars](./tutorials/creating-new-avatars.md)
 * [Using Custom Assets](./tutorials/using-custom-assets.md)
 
-## 🌺 Contributing to Amica
+## 🌺 Contributing to MIYORA
 
 * [Setting up your developer environment](./contributing/setup-dev-env.md)
 * [Contributing to the Docs](./contributing/contributing-to-the-docs.md)
-* [Developing Amica](./contributing/developing-amica.md)
+* [Developing MIYORA](./contributing/developing-MIYORA.md)
 * [Adding Translations](./contributing/adding-translations.md)

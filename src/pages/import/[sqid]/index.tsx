@@ -42,7 +42,7 @@ export default function Import() {
         .eq('sqid', router.query.sqid)
         .single();
 
-      if (error || ! data) {
+      if (error || !data) {
         setError(true);
         return;
       }
@@ -151,9 +151,9 @@ export default function Import() {
 
           </div>
         )}
-        {! error && loaded && (
+        {!error && loaded && (
           <h1 className="text-lg">
-            {t("Import")} {loaded ? (`“${name}”` || 'Amica') : '...'}
+            {t("Import")} {loaded ? (`“${name}”` || 'MIYORA') : '...'}
           </h1>
         )}
       </div>
@@ -161,7 +161,7 @@ export default function Import() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <div className="sm:col-span-3 max-w-md rounded-xl mt-4 bg-gray-100">
-            { loaded && (
+            {loaded && (
               <VrmDemo
                 vrmUrl={vrmUrl}
                 onScreenShot={async (blob: Blob | null) => {
@@ -178,8 +178,8 @@ export default function Import() {
                 <div className="sm:col-span-3 max-w-md rounded-xl mt-2">
                   <button
                     onClick={async () => {
-                      await 
-                      overrideConfig();
+                      await
+                        overrideConfig();
                       window.location.href = '/';
                       setButtonDisabled(true);
                     }}
@@ -190,7 +190,7 @@ export default function Import() {
                   </button>
                 </div>
 
-                { isTauri() && (
+                {isTauri() && (
                   <div className="sm:col-span-3 max-w-md rounded-xl mt-2">
                     <Link href="/">
                       <button
@@ -200,7 +200,7 @@ export default function Import() {
                       </button>
                     </Link>
                   </div>
-                ) }
+                )}
               </>
             )}
           </div>
@@ -222,7 +222,7 @@ export default function Import() {
             </div>
           )}
 
-          { name && name != defaultConfig('name') && (
+          {name && name != defaultConfig('name') && (
             <div className="sm:col-span-3 max-w-md rounded-xl mt-4">
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 {t("Name")}

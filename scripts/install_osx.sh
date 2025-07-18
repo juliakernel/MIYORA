@@ -41,7 +41,7 @@ else
     exit 1
 fi
 
-echo "Building amica"
+echo "Building MIYORA"
 cd "${ROOT_DIR}"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install

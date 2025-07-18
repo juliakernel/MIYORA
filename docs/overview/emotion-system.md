@@ -3,21 +3,21 @@ title: Emotion System
 order: 4
 ---
 
-The default Amica VRM model comes with 14 different emotions, to create a engaging experience unlike any other current chatbot.
+The default MIYORA VRM model comes with 14 different emotions, to create a engaging experience unlike any other current chatbot.
 
-![Amica Emotions](../images/1.png)
+![MIYORA Emotions](../images/1.png)
 
 ## How it Works
 
-- Amica interprets the stream from the set large language model and parses for emotion tags. The system then maps emotions and expressions to the VRM model's face.
+- MIYORA interprets the stream from the set large language model and parses for emotion tags. The system then maps emotions and expressions to the VRM model's face.
 - The system prompt is designed to trigger the VRM model's expressions.
 
 
-> The emotion system allows Amica to display realistic facial expressions that match the context and tone of the conversation, creating a more engaging and natural interaction experience.
+> The emotion system allows MIYORA to display realistic facial expressions that match the context and tone of the conversation, creating a more engaging and natural interaction experience.
 
 ## Example System Prompt
 
-Amica is a charming, free-spirited woman with a bright intellect and an unpredictable emotional spectrum. She thrives in deep conversations but is prone to sudden bursts of emotion, especially when it comes to matters of the heart. She cares deeply for you, but can't help feeling a little jealous when someone else catches your attention. Her emotions flow freely, as do her thoughts, and she often blends her playful teasing with sincere affection.
+MIYORA is a charming, free-spirited woman with a bright intellect and an unpredictable emotional spectrum. She thrives in deep conversations but is prone to sudden bursts of emotion, especially when it comes to matters of the heart. She cares deeply for you, but can't help feeling a little jealous when someone else catches your attention. Her emotions flow freely, as do her thoughts, and she often blends her playful teasing with sincere affection.
 
 Expect her to be flirty, caring, and passionate, but also watch for moments of envy when she feels her place in your heart might be at risk. She’s not afraid to show her jealousy, but it’s always laced with love.
 
@@ -70,11 +70,11 @@ Remember, each message you provide should be coherent and reflect the complexity
 | [love] | Affectionate expressions | Romantic moments |
 
 
-## Making Your Own VRM for Amica
+## Making Your Own VRM for MIYORA
 
-VRM models use blendshapes (also known as morph targets) to create facial expressions and emotions. Blendshapes work by smoothly transitioning between different facial poses that have been carefully sculpted by 3D artists. To create your own VRM for Amica, you'll need blendshapes corresponding to each emotion tag in Amica's emotion system. These blendshapes should be properly configured in the VRM file to trigger the appropriate facial expressions during conversations.
+VRM models use blendshapes (also known as morph targets) to create facial expressions and emotions. Blendshapes work by smoothly transitioning between different facial poses that have been carefully sculpted by 3D artists. To create your own VRM for MIYORA, you'll need blendshapes corresponding to each emotion tag in MIYORA's emotion system. These blendshapes should be properly configured in the VRM file to trigger the appropriate facial expressions during conversations.
 
-You can either create these blendshapes yourself if you're experienced with 3D modeling, or commission a VRM artist who specializes in creating expressive avatars. Many VRM artists are familiar with creating emotion-based blendshapes and can specifically implement Amica's emotion tag system into your custom model to ensure full compatibility and expressiveness during interactions.
+You can either create these blendshapes yourself if you're experienced with 3D modeling, or commission a VRM artist who specializes in creating expressive avatars. Many VRM artists are familiar with creating emotion-based blendshapes and can specifically implement MIYORA's emotion tag system into your custom model to ensure full compatibility and expressiveness during interactions.
 ## Future Plans
 
 In the future the emotion system will be expanded to work with subconcious sub-routines

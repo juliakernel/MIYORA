@@ -117,7 +117,7 @@ export class Model {
     if (config("use_webgpu") === "true") {
       // create a WebGPU compatible MToonMaterialLoaderPlugin
       // @ts-ignore
-      // TODO currently MToonNodeMaterial is broken in amica
+      // TODO currently MToonNodeMaterial is broken in MIYORA
       // materialType = MTonNodeMaterial;
     }
 
@@ -238,7 +238,7 @@ export class Model {
   }
 
   public setTransparency(opacity: number) {
-    if (! this.vrm) {
+    if (!this.vrm) {
       return;
     }
 

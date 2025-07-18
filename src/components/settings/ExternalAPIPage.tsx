@@ -8,7 +8,7 @@ import { IconButton } from '../iconButton';
 import { SecretTextInput } from '../secretTextInput';
 import { useContext, useEffect } from 'react';
 import { ChatContext } from '@/features/chat/chatContext';
-import { AmicaLifeContext } from '@/features/amicaLife/amicaLifeContext';
+import { MIYORALifeContext } from '@/features/MIYORALife/MIYORALifeContext';
 
 
 export function ExternalAPIPage({
@@ -17,7 +17,7 @@ export function ExternalAPIPage({
     setSettingsUpdated,
 }: {
     externalApiEnabled: boolean;
-    setExternalApiEnabled: (amicaLifeEnabled: boolean) => void;
+    setExternalApiEnabled: (MIYORALifeEnabled: boolean) => void;
     setSettingsUpdated: (updated: boolean) => void;
 }) {
 
@@ -52,7 +52,7 @@ export function ExternalAPIPage({
                         />
                     </FormRow>
                 </li>
-                
+
             </ul>
         </BasicPage>
     );

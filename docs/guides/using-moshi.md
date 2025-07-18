@@ -54,13 +54,13 @@ uvicorn moshi_service:app --host 127.0.0.1 --port 8000
 
 ---
 
-### **Step 3: Change Settings on Amica to Use Moshi**  
+### **Step 3: Change Settings on MIYORA to Use Moshi**  
 
 Open Settings > Chatbot Backend , and select Moshi.
 
 Then go to Settings > Chatbot Backend > Moshi, and then insert the correct URL for accessing Moshi server. (E.g. http://localhost:8000 for local server and a runpod proxy URL, which is on your runpod instance and looks like : https://rn8xojhvb-8000.proxy.runpod.net, the URL has the runpod instance identifier and the port)
 
-*There is no difference whether you are running locally or off the Amica demo.*
+*There is no difference whether you are running locally or off the MIYORA demo.*
 
 
 ---

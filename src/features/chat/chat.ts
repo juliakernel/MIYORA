@@ -32,7 +32,7 @@ import { openaiTTS } from "@/features/openaiTTS/openaiTTS";
 import { localXTTSTTS } from "@/features/localXTTS/localXTTS";
 import { kokoro } from "../kokoro/kokoro";
 
-import { AmicaLife } from "@/features/amicaLife/amicaLife";
+import { MIYORALife } from "@/features/MIYORALife/MIYORALife";
 
 import { config, updateConfig } from "@/utils/config";
 import { cleanTalk } from "@/utils/cleanTalk";
@@ -59,7 +59,7 @@ type TTSJob = {
 export class Chat {
   public initialized: boolean;
 
-  public amicaLife?: AmicaLife;
+  public MIYORALife?: MIYORALife;
   public viewer?: Viewer;
   public alert?: Alert;
 
@@ -119,7 +119,7 @@ export class Chat {
   }
 
   public initialize(
-    amicaLife: AmicaLife,
+    MIYORALife: MIYORALife,
     viewer: Viewer,
     alert: Alert,
     setChatLog: (messageLog: Message[]) => void,
@@ -130,7 +130,7 @@ export class Chat {
     setChatProcessing: (processing: boolean) => void,
     setChatSpeaking: (speaking: boolean) => void,
   ) {
-    this.amicaLife = amicaLife;
+    this.MIYORALife = MIYORALife;
     this.viewer = viewer;
     this.alert = alert;
     this.setChatLog = setChatLog;
@@ -305,7 +305,7 @@ export class Chat {
       if (
         this.currentAssistantMessage != "" &&
         !this.isAwake() &&
-        config("amica_life_enabled") === "true"
+        config("MIYORA_life_enabled") === "true"
       ) {
         this.messageList!.push({
           role: "assistant",
@@ -372,7 +372,7 @@ export class Chat {
   }
 
   // this happens either from text or from voice / whisper completion
-  public async receiveMessageFromUser(message: string, amicaLife: boolean) {
+  public async receiveMessageFromUser(message: string, MIYORALife: boolean) {
     if (message === null || message === "") {
       return;
     }
@@ -384,13 +384,13 @@ export class Chat {
     await wait(0);
     console.debug("wait complete");
 
-    if (!amicaLife) {
+    if (!MIYORALife) {
       console.log("receiveMessageFromUser", message);
 
       // For external API
       await handleUserInput(message);
 
-      this.amicaLife?.receiveMessageFromUser(message);
+      this.MIYORALife?.receiveMessageFromUser(message);
 
       if (!/\[.*?\]/.test(message)) {
         message = `[neutral] ${message}`;
@@ -404,7 +404,7 @@ export class Chat {
     const messages: Message[] = [
       { role: "system", content: config("system_prompt") },
       ...this.messageList!,
-      { role: "user", content: amicaLife ? message : this.currentUserMessage },
+      { role: "user", content: MIYORALife ? message : this.currentUserMessage },
     ];
     // console.debug('messages', messages);
 
@@ -414,11 +414,11 @@ export class Chat {
   public initSSE() {
     if (!isDev || config("external_api_enabled") !== "true") {
       return;
-    }  
+    }
     // Close existing SSE connection if it exists
     this.closeSSE();
 
-    this.eventSource = new EventSource('/api/amicaHandler');
+    this.eventSource = new EventSource('/api/MIYORAHandler');
 
     // Listen for incoming messages from the server
     this.eventSource.onmessage = async (event) => {
@@ -438,20 +438,20 @@ export class Chat {
             const messages: Message[] = [
               { role: "system", content: config("system_prompt") },
               ...this.messageList!,
-              { role: "user", content: data},
+              { role: "user", content: data },
             ];
             let stream = await getEchoChatResponseStream(messages);
             this.streams.push(stream);
             this.handleChatResponseStream();
             break;
-          
+
           case 'animation':
             console.log('Animation data received:', data);
             const animation = await loadVRMAnimation(`/animations/${data}`);
             if (!animation) {
               throw new Error("Loading animation failed");
             }
-            this.viewer?.model?.playAnimation(animation,data);
+            this.viewer?.model?.playAnimation(animation, data);
             requestAnimationFrame(() => { this.viewer?.resetCameraLerp(); });
             break;
 
@@ -481,7 +481,7 @@ export class Chat {
 
           case 'systemPrompt':
             console.log('System Prompt data received:', data);
-            updateConfig("system_prompt",data);
+            updateConfig("system_prompt", data);
             break;
 
           default:
@@ -507,11 +507,11 @@ export class Chat {
 
   public closeSSE() {
     if (this.eventSource) {
-        console.log("Closing existing SSE connection...");
-        this.eventSource.close();
-        this.eventSource = null;
+      console.log("Closing existing SSE connection...");
+      this.eventSource.close();
+      this.eventSource = null;
     }
-}
+  }
 
   public async makeAndHandleStream(messages: Message[]) {
     try {
@@ -594,11 +594,11 @@ export class Chat {
                 screenplay: aiTalks[0],
                 streamIdx: streamIdx,
               });
-            } 
+            }
 
             // thought bubble
             this.thoughtBubbleMessage(isThinking, aiTalks[0].text);
-            
+
             if (!firstSentenceEncountered) {
               console.timeEnd("performance_time_to_first_sentence");
               firstSentenceEncountered = true;
@@ -716,7 +716,7 @@ export class Chat {
 
     if (config("reasoning_engine_enabled") === "true") {
       return getReasoingEngineChatResponseStream(systemPrompt, conversationMessages)
-    } 
+    }
 
     switch (chatbotBackend) {
       case "arbius_llm":

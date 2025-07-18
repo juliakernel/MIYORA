@@ -18,8 +18,8 @@ async function getResponseStream(
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${apiKey}`,
-    "HTTP-Referer": "https://amica.arbius.ai",
-    "X-Title": "Amica",
+    "HTTP-Referer": "https://MIYORA.arbius.ai",
+    "X-Title": "MIYORA",
   };
 
   const res = await fetch(`${url}/v1/chat/completions`, {
@@ -34,7 +34,7 @@ async function getResponseStream(
   });
 
   const reader = res.body?.getReader();
-  if (res.status !== 200 || ! reader) {
+  if (res.status !== 200 || !reader) {
     if (res.status === 401) {
       throw new Error('Invalid OpenAI authentication');
     }

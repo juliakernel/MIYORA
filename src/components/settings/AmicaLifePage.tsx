@@ -9,11 +9,11 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { ChatContext } from '@/features/chat/chatContext';
 import { TextInput } from '../textInput';
 import { IconButton } from '../iconButton';
-import { AmicaLifeContext } from '@/features/amicaLife/amicaLifeContext';
+import { MIYORALifeContext } from '@/features/MIYORALife/MIYORALifeContext';
 
 
-export function AmicaLifePage({
-    amicaLifeEnabled,
+export function MIYORALifePage({
+    MIYORALifeEnabled,
     reasoningEngineEnabled,
     reasoningEngineUrl,
     timeBeforeIdle,
@@ -21,7 +21,7 @@ export function AmicaLifePage({
     maxTimeInterval,
     timeToSleep,
     idleTextPrompt,
-    setAmicaLifeEnabled,
+    setMIYORALifeEnabled,
     setReasoningEngineEnabled,
     setReasoningEngineUrl,
     setTimeBeforeIdle,
@@ -31,7 +31,7 @@ export function AmicaLifePage({
     setIdleTextPrompt,
     setSettingsUpdated,
 }: {
-    amicaLifeEnabled: boolean;
+    MIYORALifeEnabled: boolean;
     reasoningEngineEnabled: boolean;
     reasoningEngineUrl: string,
     timeBeforeIdle: number;
@@ -39,7 +39,7 @@ export function AmicaLifePage({
     maxTimeInterval: number;
     timeToSleep: number;
     idleTextPrompt: string;
-    setAmicaLifeEnabled: (amicaLifeEnabled: boolean) => void;
+    setMIYORALifeEnabled: (MIYORALifeEnabled: boolean) => void;
     setReasoningEngineEnabled: (reasoningEngineEnabled: boolean) => void;
     setReasoningEngineUrl: (reasoningEngineUrl: string) => void;
     setTimeBeforeIdle: (timeBeforeIdle: number) => void;
@@ -51,11 +51,11 @@ export function AmicaLifePage({
 }) {
     const { t } = useTranslation();
     const { chat: bot } = useContext(ChatContext);
-    const { amicaLife } = useContext(AmicaLifeContext);
+    const { MIYORALife } = useContext(MIYORALifeContext);
 
     useEffect(() => {
-        amicaLife.processingIdle();
-      }, [amicaLifeEnabled, amicaLife]);
+        MIYORALife.processingIdle();
+    }, [MIYORALifeEnabled, MIYORALife]);
 
     const jsonFileInputRef = useRef<HTMLInputElement>(null);
     const handleClickOpenJsonFile = useCallback(() => {
@@ -71,7 +71,7 @@ export function AmicaLifePage({
                     if (content) {
                         const parsedContent = JSON.parse(content);
                         if (parsedContent.idleTextPrompt) {
-                            amicaLife.loadIdleTextPrompt(parsedContent.idleTextPrompt);
+                            MIYORALife.loadIdleTextPrompt(parsedContent.idleTextPrompt);
                             console.log("idleTextPrompt", parsedContent.idleTextPrompt);
                         } else {
                             console.error("Wrong json format");
@@ -90,19 +90,19 @@ export function AmicaLifePage({
 
     return (
         <BasicPage
-            title={`${t("Amica Life")} ${t("Settings")}`}
+            title={`${t("MIYORA Life")} ${t("Settings")}`}
             description={`${t("Enables")} ${t("Semi-autonomous mode, includes animations, sleep, function calling, subconcious subroutine and self-prompting. (Experimental)")}`}
         >
             <ul role="list" className="divide-y divide-gray-100 max-w-xs">
                 <li className="py-4">
-                    <FormRow label={`${t("Use")} ${t("Amica Life")}`}>
+                    <FormRow label={`${t("Use")} ${t("MIYORA Life")}`}>
                         <SwitchBox
-                            value={amicaLifeEnabled}
-                            label={`${t("Amica Life")} ${t("Enabled")} ${t("(Disable to improve performance)")}`}
-                            disabled={["echo", "moshi"].includes(config("chatbot_backend"))                            }
+                            value={MIYORALifeEnabled}
+                            label={`${t("MIYORA Life")} ${t("Enabled")} ${t("(Disable to improve performance)")}`}
+                            disabled={["echo", "moshi"].includes(config("chatbot_backend"))}
                             onChange={(value: boolean) => {
-                                setAmicaLifeEnabled(value);
-                                updateConfig("amica_life_enabled", value.toString());
+                                setMIYORALifeEnabled(value);
+                                updateConfig("MIYORA_life_enabled", value.toString());
                                 setSettingsUpdated(true);
                             }}
                         />
@@ -124,7 +124,7 @@ export function AmicaLifePage({
                     </FormRow>
                 </li>
 
-                {amicaLifeEnabled && (
+                {MIYORALifeEnabled && (
                     <>
 
                         <li className="py-4">
@@ -156,7 +156,7 @@ export function AmicaLifePage({
 
 
                         <li className="py-4">
-                            <FormRow label={`${t("Idle time before Amica life activates")}(${t("sec")})`}>
+                            <FormRow label={`${t("Idle time before MIYORA life activates")}(${t("sec")})`}>
                                 <NumberInput
                                     value={timeBeforeIdle}
                                     min={0}
@@ -212,12 +212,12 @@ export function AmicaLifePage({
                         <li className="py-4">
                             <FormRow label="Reasoning Engine Url">
                                 <TextInput
-                                value={reasoningEngineUrl}
-                                onChange={(event: React.ChangeEvent<any>) => {
-                                    setReasoningEngineUrl(event.target.value);
-                                    updateConfig("reasoning_engine_url", event.target.value);
-                                    setSettingsUpdated(true);
-                                }}
+                                    value={reasoningEngineUrl}
+                                    onChange={(event: React.ChangeEvent<any>) => {
+                                        setReasoningEngineUrl(event.target.value);
+                                        updateConfig("reasoning_engine_url", event.target.value);
+                                        setSettingsUpdated(true);
+                                    }}
                                 />
                             </FormRow>
                         </li>

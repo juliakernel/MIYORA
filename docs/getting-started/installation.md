@@ -1,12 +1,12 @@
 ---
-title: Installing Amica
+title: Installing MIYORA
 order: 2
 ---
 
 To run this project locally, clone or download the repository.
 
 ```sh
-git clone git@github.com:semperai/amica.git
+git clone git@github.com:semperai/MIYORA.git
 ```
 
 

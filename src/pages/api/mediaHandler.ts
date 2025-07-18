@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { TimestampedPrompt } from '@/features/amicaLife/eventHandler';
+import { TimestampedPrompt } from '@/features/MIYORALife/eventHandler';
 import { config as configs } from '@/utils/config';
-import { apiLogs } from './amicaHandler';
+import { apiLogs } from './MIYORAHandler';
 
 import { handleConfig } from '@/features/externalAPI/externalAPI';
 import { ApiResponse, generateSessionId, sendError } from '@/features/externalAPI/utils/apiHelper';
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const currentSessionId = generateSessionId();
   const timestamp = new Date().toISOString();
-  
+
   if (req.headers['content-type']?.includes('multipart/form-data')) {
     // Handle form-data
     const form = formidable({});
@@ -101,10 +101,10 @@ async function handleRequest(
         return sendError(res, sessionId, "Unknown input type.");
     }
 
-    apiLogs.push({sessionId: sessionId,timestamp,inputType,outputType,response});
+    apiLogs.push({ sessionId: sessionId, timestamp, inputType, outputType, response });
     res.status(200).json({ sessionId, outputType, response });
   } catch (error) {
-    apiLogs.push({sessionId: sessionId,timestamp,inputType,outputType: "Error",error: String(error)});
+    apiLogs.push({ sessionId: sessionId, timestamp, inputType, outputType: "Error", error: String(error) });
     sendError(res, sessionId, String(error), 500);
   }
 }

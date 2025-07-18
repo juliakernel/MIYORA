@@ -1,6 +1,10 @@
 const CopyPlugin = require("copy-webpack-plugin");
 const withPWA = require("@ducanh2912/next-pwa").default({
   dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+  buildExcludes: [/middleware-manifest\.json$/],
 });
 
 const output = process.env.NEXT_OUTPUT || undefined;
@@ -75,8 +79,8 @@ module.exports = withSentryConfig(module.exports, {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options
 
-  org: "heyamica",
-  project: "chat-heyamica",
+  org: "heyMIYORA",
+  project: "chat-heyMIYORA",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,

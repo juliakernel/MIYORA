@@ -37,10 +37,10 @@ fn main() {
             std::process::exit(0);
           }
           "checkforupdates" => {
-            tauri::api::shell::open(&app.shell_scope(), "https://github.com/semperai/amica/releases/latest", None).expect("failed to open url");
+            tauri::api::shell::open(&app.shell_scope(), "https://github.com/semperai/MIYORA/releases/latest", None).expect("failed to open url");
           }
           "help" => {
-            tauri::api::shell::open(&app.shell_scope(), "https://docs.heyamica.com", None).expect("failed to open url");
+            tauri::api::shell::open(&app.shell_scope(), "https://docs.heyMIYORA.com", None).expect("failed to open url");
           }
           _ => {}
         }

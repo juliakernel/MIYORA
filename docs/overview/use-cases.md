@@ -3,7 +3,7 @@ title: Use Cases
 order: 5
 ---
 
-At its core, Amica is a platform for creating lifelike avatars that can be used in a variety of applications. The following are some examples of how Amica can be used to create engaging and interactive experiences for users.
+At its core, MIYORA is a platform for creating lifelike avatars that can be used in a variety of applications. The following are some examples of how MIYORA can be used to create engaging and interactive experiences for users.
 
 ## Virtual Assistants
 

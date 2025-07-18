@@ -23,7 +23,7 @@ export async function localXTTSTTS(message: string) {
     narrator_voice_gen: config("alltalk_voice") || 'female_01.wav',
     text_not_inside: 'character',
     language: config("alltalk_language") || 'en',
-    output_file_name: 'amica_output',
+    output_file_name: 'MIYORA_output',
     output_file_timestamp: 'true',
     autoplay: 'false',
     autoplay_volume: '0.8',
@@ -41,7 +41,7 @@ export async function localXTTSTTS(message: string) {
   try {
     console.log('[AllTalk] Processing text:', message);
     console.log('[AllTalk] Form data:', Object.fromEntries(formData));
-    
+
     const res = await fetch(`${baseUrl}/api/tts-generate`, {
       method: "POST",
       body: formData,
@@ -54,9 +54,9 @@ export async function localXTTSTTS(message: string) {
 
     const data = await res.json();
     console.log('[AllTalk] TTS Response:', data);
-    
+
     // Handle V1/V2 URL differences
-    const audioUrl = config("alltalk_version") === "v1" 
+    const audioUrl = config("alltalk_version") === "v1"
       ? data.output_file_url  // V1 returns full URL
       : `${baseUrl}${data.output_file_url}`; // V2 returns relative path
 

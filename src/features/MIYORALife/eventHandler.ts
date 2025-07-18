@@ -8,7 +8,7 @@ import { basename } from "@/components/settings/common";
 import { askLLM } from "@/utils/askLlm";
 
 import { functionCalling } from "@/features/functionCalling/functionCalling";
-import { AmicaLife } from "./amicaLife";
+import { MIYORALife } from "./MIYORALife";
 import { Viewer } from "../vrmViewer/viewer";
 import { config } from "@/utils/config";
 import isDev from "@/utils/isDev";
@@ -34,7 +34,7 @@ export const basedPrompt = {
   ],
 };
 
-export type AmicaLifeEvents = {
+export type MIYORALifeEvents = {
   events: string;
 };
 
@@ -54,7 +54,7 @@ let previousAnimation = "";
 
 // Handles the VRM animation event.
 
-async function handleVRMAnimationEvent(viewer: Viewer, amicaLife: AmicaLife) {
+async function handleVRMAnimationEvent(viewer: Viewer, MIYORALife: MIYORALife) {
   let randomAnimation;
   do {
     randomAnimation = animationList[Math.floor(Math.random() * animationList.length)];
@@ -77,7 +77,7 @@ async function handleVRMAnimationEvent(viewer: Viewer, amicaLife: AmicaLife) {
 
       // Set timeout for the duration of the animation
       setTimeout(() => {
-        amicaLife.eventProcessing = false;
+        MIYORALife.eventProcessing = false;
         console.timeEnd("processing_event VRMA");
       }, duration * 1000);
     }
@@ -88,7 +88,7 @@ async function handleVRMAnimationEvent(viewer: Viewer, amicaLife: AmicaLife) {
 
 // Handles text-based idle events.
 
-async function handleTextEvent(chat: Chat, amicaLife: AmicaLife) {
+async function handleTextEvent(chat: Chat, MIYORALife: MIYORALife) {
   // Randomly select the idle text prompts
   const randomIndex = Math.floor(
     Math.random() * basedPrompt.idleTextPrompt.length,
@@ -98,7 +98,7 @@ async function handleTextEvent(chat: Chat, amicaLife: AmicaLife) {
   //console.log("Handling idle event (text):", randomTextPrompt);
   try {
     await chat.receiveMessageFromUser?.(randomTextPrompt, true);
-    amicaLife.eventProcessing = false;
+    MIYORALife.eventProcessing = false;
     console.timeEnd(`processing_event IdleTextPrompts`);
   } catch (error) {
     console.error(
@@ -110,17 +110,17 @@ async function handleTextEvent(chat: Chat, amicaLife: AmicaLife) {
 
 // Handles sleep event.
 
-export async function handleSleepEvent(chat: Chat, amicaLife: AmicaLife) {
+export async function handleSleepEvent(chat: Chat, MIYORALife: MIYORALife) {
   console.log("Sleeping...");
-  amicaLife.pause();
-  amicaLife.isSleep = true;
+  MIYORALife.pause();
+  MIYORALife.isSleep = true;
   try {
     const viewer = chat.viewer;
     if (viewer) {
       // @ts-ignore
       await viewer.model!.playEmotion("Sleep");
     }
-    amicaLife.eventProcessing = false;
+    MIYORALife.eventProcessing = false;
     console.timeEnd("processing_event Sleep");
   } catch (error) {
     console.error("Error playing emotion sleep:", error);
@@ -131,7 +131,7 @@ export async function handleSleepEvent(chat: Chat, amicaLife: AmicaLife) {
 
 export async function handleSubconsciousEvent(
   chat: Chat,
-  amicaLife: AmicaLife,
+  MIYORALife: MIYORALife,
 ) {
   // removed for staging logs.
   //console.log("Handling idle event:", "Subconscious");
@@ -139,9 +139,8 @@ export async function handleSubconsciousEvent(
   const convo = chat.messageList;
   const convoLog = convo
     .map((message) => {
-      return `${message.role === "user" ? "User" : "Assistant"}: ${
-        message.content
-      }`;
+      return `${message.role === "user" ? "User" : "Assistant"}: ${message.content
+        }`;
     })
     .join("\n");
 
@@ -207,8 +206,8 @@ export async function handleSubconsciousEvent(
       } catch (error) {
         console.error("Error handling external API:", error);
       }
-    // External API Off or Isn't development case
-    } else { 
+      // External API Off or Isn't development case
+    } else {
       storedSubconcious.push(timestampedPrompt);
       let totalStorageTokens = storedSubconcious.reduce(
         (totalTokens, prompt) => totalTokens + prompt.prompt.length,
@@ -219,11 +218,11 @@ export async function handleSubconsciousEvent(
         totalStorageTokens -= removed!.prompt.length;
       }
     }
-    
-    console.log("Stored subconcious prompts:", storedSubconcious);
-    amicaLife.setSubconciousLogs!(storedSubconcious);
 
-    amicaLife.eventProcessing = false;
+    console.log("Stored subconcious prompts:", storedSubconcious);
+    MIYORALife.setSubconciousLogs!(storedSubconcious);
+
+    MIYORALife.eventProcessing = false;
     console.timeEnd(`processing_event Subconcious`);
   } catch (error) {
     console.error("Error handling subconscious event:", error);
@@ -232,7 +231,7 @@ export async function handleSubconsciousEvent(
 
 // Handles news event
 
-export async function handleNewsEvent(chat: Chat, amicaLife: AmicaLife) {
+export async function handleNewsEvent(chat: Chat, MIYORALife: MIYORALife) {
   console.log("Function Calling: News");
 
   try {
@@ -241,7 +240,7 @@ export async function handleNewsEvent(chat: Chat, amicaLife: AmicaLife) {
       throw new Error("Loading news failed");
     }
     await chat.receiveMessageFromUser?.(news, true);
-    amicaLife.eventProcessing = false;
+    MIYORALife.eventProcessing = false;
     console.timeEnd("processing_event News");
   } catch (error) {
     console.error(
@@ -254,8 +253,8 @@ export async function handleNewsEvent(chat: Chat, amicaLife: AmicaLife) {
 // Main handler for idle events.
 
 export async function handleIdleEvent(
-  event: AmicaLifeEvents,
-  amicaLife: AmicaLife,
+  event: MIYORALifeEvents,
+  MIYORALife: MIYORALife,
   chat: Chat,
   viewer: Viewer,
 ) {
@@ -266,19 +265,19 @@ export async function handleIdleEvent(
 
   switch (event.events) {
     case "VRMA":
-      await handleVRMAnimationEvent(viewer, amicaLife);
+      await handleVRMAnimationEvent(viewer, MIYORALife);
       break;
     case "Subconcious":
-      await handleSubconsciousEvent(chat, amicaLife);
+      await handleSubconsciousEvent(chat, MIYORALife);
       break;
     case "News":
-      await handleNewsEvent(chat, amicaLife);
+      await handleNewsEvent(chat, MIYORALife);
       break;
     case "Sleep":
-      await handleSleepEvent(chat, amicaLife);
+      await handleSleepEvent(chat, MIYORALife);
       break;
     default:
-      await handleTextEvent(chat, amicaLife);
+      await handleTextEvent(chat, MIYORALife);
       break;
   }
 }

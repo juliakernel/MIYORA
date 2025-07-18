@@ -5,7 +5,7 @@ order: 2
 
 ## How our docs are structured
 
-Our docs are centralized inside the `docs/` folder of our GitHub repository for `amica`. These files are synced to GitBook, our documentation publishing tool, which composes them into what users see when they navigate to <https://docs.heyamica.com>.
+Our docs are centralized inside the `docs/` folder of our GitHub repository for `MIYORA`. These files are synced to GitBook, our documentation publishing tool, which composes them into what users see when they navigate to <https://docs.heyMIYORA.com>.
 
 
 Our `gitbook.yaml` file determines link redirects and the basic structure of our documentation “tree”. You can find more documentation on this file [at GitBook's website](https://docs.gitbook.com/product-tour/git-sync/content-configuration#.gitbook.yaml-1).
@@ -14,7 +14,7 @@ Our `gitbook.yaml` file determines link redirects and the basic structure of our
 
 There's a few things you'll need to make your first contribution to the docs:
 
-1. A local copy of the `amica` Git repository downloaded to your machine. You can find instructions in GitHub's official documentation for [cloning a Git repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+1. A local copy of the `MIYORA` Git repository downloaded to your machine. You can find instructions in GitHub's official documentation for [cloning a Git repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 2. Some basic knowledge of Git. If one or more users are contributing to the docs at the same time you are, it is likely you will need to resolve merge conflicts on the CLI or in your visual Git tool. GitHub has [documentation on resolving merge conflicts using the CLI](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line) or you can use a simple, visual Git tool like [Fork](https://fork.dev/) available for macOS and Windows.
   a. In case of emergencies, refer to [Oh Shit, Git!?!](https://ohshitgit.com/).
   b. For new learners, the [computer game, Oh my Git!](https://ohmygit.org/) can teach you Git.
@@ -41,7 +41,7 @@ We also need to change any existing redirects inside `gitbook.yaml` to point to 
 
 For every file you've renamed or moved, make sure to add a new redirect in `gitbook.yaml` pointing from its old location to its new location unless you're *sure* no one externally has linked to it.
 
-You'll also need to find and replace all instances of links within the `amica` repository to your file. An editor like Visual Studio Code will have a [find and replace feature](https://code.visualstudio.com/docs/editor/codebasics#_find-and-replace).
+You'll also need to find and replace all instances of links within the `MIYORA` repository to your file. An editor like Visual Studio Code will have a [find and replace feature](https://code.visualstudio.com/docs/editor/codebasics#_find-and-replace).
 
 {% hint style="warning" %}
 *Do not change absolute URLs within the same pull request*. Absolute URLs are links beginning with `https:`.
@@ -60,7 +60,7 @@ title: Tutorials
 ---
 ```
 
-The order should correspond to its position from top to bottom in the sidebar on <https://docs.heyamica.com> and the title should be the title of the section as it appears in the sidebar. We like to use a floral-themed emoji to demarcate new sections :rose:.
+The order should correspond to its position from top to bottom in the sidebar on <https://docs.heyMIYORA.com> and the title should be the title of the section as it appears in the sidebar. We like to use a floral-themed emoji to demarcate new sections :rose:.
 
 ## Syntax
 

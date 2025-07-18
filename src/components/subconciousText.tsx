@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { TimestampedPrompt } from "@/features/amicaLife/eventHandler";
+import { TimestampedPrompt } from "@/features/MIYORALife/eventHandler";
 import { useTranslation } from "react-i18next";
 import { IconBrain } from '@tabler/icons-react';
 

@@ -22,7 +22,7 @@ class Scenario {
     const Ammo = $.ammo;
 
     await $.loadVrm(
-      // 'https://vrm.heyamica.com/file/amica-vrm/82754e287e0b26b5d7a1fd223ed0fd5debcabed81f36549fb2c16b201f3e5ca9',
+      // 'https://vrm.heyMIYORA.com/file/MIYORA-vrm/82754e287e0b26b5d7a1fd223ed0fd5debcabed81f36549fb2c16b201f3e5ca9',
       '/vrm/AvatarSample_B.vrm',
       (progress) => {
         console.log(`loading model ${progress}`);

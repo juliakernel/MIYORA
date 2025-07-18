@@ -4,18 +4,18 @@ order: 1
 ---
 
 {% hint style="info" %}
-An interactive demo is available. To get started, [launch Amica](https://amica.arbius.ai).
+An interactive demo is available. To get started, [launch MIYORA](https://MIYORA.arbius.ai).
 {% endhint %}
 
 ## Quickstart
 
-Amica is a web-based application that allows you to create and manage your own AI avatars. It is designed to be easy to use, and requires no coding experience. This guide will walk you through the process of creating your first avatar.
+MIYORA is a web-based application that allows you to create and manage your own AI avatars. It is designed to be easy to use, and requires no coding experience. This guide will walk you through the process of creating your first avatar.
 
-### Step 1 - Launch Amica
+### Step 1 - Launch MIYORA
 
-Amica is a web-based application, so there is no need to install anything. Simply [launch Amica](https://amica.arbius.ai) in your browser. We recommend using Google Chrome.
+MIYORA is a web-based application, so there is no need to install anything. Simply [launch MIYORA](https://MIYORA.arbius.ai) in your browser. We recommend using Google Chrome.
 
-However, you may want to self-host Amica. If so, you can find the source code on [GitHub](https://github.com/semperai/amica).
+However, you may want to self-host MIYORA. If so, you can find the source code on [GitHub](https://github.com/semperai/MIYORA).
 
 Read the [Local Setup](../getting-started/installation.md) guide if you are interested in getting everything running locally quickly.
 
@@ -23,11 +23,11 @@ If you are using web you can start chatting immedietely by speaking into microph
 
 ### Step 2 - Customize your AI
 
-Amica comes with a default avatar (14 Emotion Expressions). You can modify this avatar by clicking on "Settings" button in the top left corner of the screen.
+MIYORA comes with a default avatar (14 Emotion Expressions). You can modify this avatar by clicking on "Settings" button in the top left corner of the screen.
 
 In the settings page, you can change everything about your avatar and AI.
 
-![Amica Life](../images/4.png)
+![MIYORA Life](../images/4.png)
 
 If you would like to change the model:
 

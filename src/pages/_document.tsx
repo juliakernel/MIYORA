@@ -5,18 +5,34 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script'
 
 export default function Document() {
-  const title = "Amica - Where Empathy Meets AI";
-  const description = "Amica is your personal 3D companion that can communicate via natural voice chat and vision, with an emotion engine that allows Amica to express feelings, complete tasks and engage on her own.";
-  const imageUrl = "https://amica.arbius.ai/ogp.png";
+  const title = "MIYORA - Your Friendly Personal AI";
+  const description = "Converse with highly customizable 3D characters that can communicate via natural voice chat and vision, with an emotion engine that allows MIYORA to express feelings and more.";
+  const imageUrl = "https://MIYORA.arbius.ai/ogp.png";
+  const keywords = "AI, chat, 3D, VRM, voice, vision, emotion, virtual character, conversational AI, text-to-speech, speech-to-text, OpenAI, Llama, Ollama, Three.js, Next.js, React, TypeScript";
 
   return (
     <Html lang="en">
       <Head>
         <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content="SemperAI" />
+        <meta name="creator" content="SemperAI" />
+        <meta name="publisher" content="SemperAI" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content="https://MIYORA.arbius.ai" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="MIYORA" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@arbius_ai" />
+        <meta name="twitter:creator" content="@arbius_ai" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imageUrl} />

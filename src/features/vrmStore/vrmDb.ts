@@ -5,7 +5,7 @@ export class VrmDexie extends Dexie {
   vrms!: Table<VrmDbModel>;
 
   constructor() {
-    super('AmicaVrmDatabase');
+    super('MIYORAVrmDatabase');
     this.version(1).stores({
       vrms: 'hash' // Primary key and indexed props
     });

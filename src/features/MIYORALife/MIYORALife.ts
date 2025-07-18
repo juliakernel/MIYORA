@@ -6,19 +6,19 @@ import { pauseIdleTimer, resumeIdleTimer } from "@/utils/isIdle";
 
 import { Chat } from "@/features/chat/chat";
 import {
-  AmicaLifeEvents,
+  MIYORALifeEvents,
   idleEvents,
   handleIdleEvent,
   basedPrompt,
   TimestampedPrompt,
-} from "@/features/amicaLife/eventHandler";
+} from "@/features/MIYORALife/eventHandler";
 import { Viewer } from "../vrmViewer/viewer";
 
 
-export class AmicaLife {
+export class MIYORALife {
   public initialized: boolean;
 
-  public mainEvents: Queue<AmicaLifeEvents>;
+  public mainEvents: Queue<MIYORALifeEvents>;
   public viewer?: Viewer;
   public chat?: Chat;
 
@@ -37,7 +37,7 @@ export class AmicaLife {
   constructor() {
     this.initialized = false;
 
-    this.mainEvents = new Queue<AmicaLifeEvents>();
+    this.mainEvents = new Queue<MIYORALifeEvents>();
     this.triggerMessage = false;
     this.eventProcessing = false;
 
@@ -57,7 +57,7 @@ export class AmicaLife {
 
     this.loadIdleTextPrompt(null);
 
-    // This loop will run depending on Amica Life Enabled/Disabled config
+    // This loop will run depending on MIYORA Life Enabled/Disabled config
     this.processingIdle();
 
     this.initialized = true;
@@ -82,8 +82,8 @@ export class AmicaLife {
   }
 
   // Function to insert event to the front of the mainEvents Queue
-  public insertFront(event: AmicaLifeEvents) {
-    const newQueue = new Queue<AmicaLifeEvents>();
+  public insertFront(event: MIYORALifeEvents) {
+    const newQueue = new Queue<MIYORALifeEvents>();
     newQueue.enqueue(event);
 
     while (!this.mainEvents.isEmpty()) {
@@ -95,7 +95,7 @@ export class AmicaLife {
 
   // Function to remove a specific event from the mainEvents queue
   public removeEvent(eventName: string) {
-    const newQueue = new Queue<AmicaLifeEvents>();
+    const newQueue = new Queue<MIYORALifeEvents>();
     let found = false;
 
     while (!this.mainEvents.isEmpty()) {
@@ -129,7 +129,7 @@ export class AmicaLife {
   public receiveMessageFromUser(message: string) {
     if (message.toLowerCase().includes('news')) {
       console.log("Triggering news function call.");
-      this.insertFront({events: "News"});
+      this.insertFront({ events: "News" });
     }
 
     // Re-enqueue subconcious event after get the user input (1 Subconcious events per idle cycle)
@@ -140,10 +140,10 @@ export class AmicaLife {
     this.triggerMessage = true;
   }
 
-  // Function handle when amica got poked in amica life event
+  // Function handle when MIYORA got poked in MIYORA life event
 
   // public handlePoked() {
-  //   if (!this.chat?.isAwake() && config("amica_life_enabled") === "true") {
+  //   if (!this.chat?.isAwake() && config("MIYORA_life_enabled") === "true") {
   //     console.log("Handling idle event:", "I just poked you!");
   //     this.chat?.receiveMessageFromUser("I just poked you!",true);
   //   }
@@ -155,9 +155,9 @@ export class AmicaLife {
 
     this.isProcessingIdleRunning = true;
 
-    console.log("Starting Amica Life");
-    while (config("amica_life_enabled") === "true") {
-      // Check if amica is in idle state trigger processingEvent loop
+    console.log("Starting MIYORA Life");
+    while (config("MIYORA_life_enabled") === "true") {
+      // Check if MIYORA is in idle state trigger processingEvent loop
       if (!this.chat?.isAwake()) {
         this.processingEvent();
       }
@@ -180,7 +180,7 @@ export class AmicaLife {
       return;
     }
 
-    // User must start the conversation with amica first to activate amica life
+    // User must start the conversation with MIYORA first to activate MIYORA life
     if (!this.triggerMessage) {
       return;
     }
@@ -193,7 +193,7 @@ export class AmicaLife {
         this.chat!.speakJobs.size() < 1 &&
         this.chat!.ttsJobs.size() < 1 &&
         !this.isChatSpeaking &&
-        !this.eventProcessing 
+        !this.eventProcessing
       ) {
 
         resumeIdleTimer();
@@ -220,8 +220,8 @@ export class AmicaLife {
         } else {
           //removed for staging usage
           //console.log("Handling idle event:", "No idle events in queue");
-        } 
-      } else if ( this.chat!.speakJobs.size() > 0 || this.chat!.ttsJobs.size() > 0 || this.isChatSpeaking) {
+        }
+      } else if (this.chat!.speakJobs.size() > 0 || this.chat!.ttsJobs.size() > 0 || this.isChatSpeaking) {
         pauseIdleTimer();
       }
 
@@ -239,7 +239,7 @@ export class AmicaLife {
     this.isPause = false;
   }
 
-  // Function to check for sleep event if idleTime > time_to_sleep add Sleep event to the front of amica queue
+  // Function to check for sleep event if idleTime > time_to_sleep add Sleep event to the front of MIYORA queue
   private async checkSleep() {
     if (!this.isSleep) {
       const chat = this.chat;
@@ -260,12 +260,12 @@ export class AmicaLife {
   // Function to pause the processingEvent loop is pauseFlag is true/false
   private async checkPause() {
     if (this.isPause) {
-      console.log("Amica Life Paused");
+      console.log("MIYORA Life Paused");
       await new Promise<void>((resolve) => {
         const checkPause = setInterval(() => {
           if (!this.isPause) {
             clearInterval(checkPause);
-            resolve(console.log("Amica Life Initiated"));
+            resolve(console.log("MIYORA Life Initiated"));
           }
         }, 50);
       });
@@ -294,7 +294,7 @@ export class AmicaLife {
     }
   }
 
-  // These is amica life utils
+  // These is MIYORA life utils
 
   // Update time before idle increase by 1.25 times
   public updatedIdleTime() {
@@ -321,5 +321,5 @@ export class AmicaLife {
     this.isSleep = false;
     this.viewer?.model?.playEmotion("Neutral");
   }
-  
+
 }

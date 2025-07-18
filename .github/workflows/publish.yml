@@ -41,9 +41,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: 'Amica v__VERSION__'
+          releaseName: 'MIYORA v__VERSION__'
           releaseBody: |
-            # Amica __VERSION__
+            # MIYORA __VERSION__
             ## Download Notes
             * `.dmg` is for **macOS**
             * `.app.tar.gz` is for **macOS**

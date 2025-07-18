@@ -72,7 +72,7 @@ const joints: string[] = [
   "pinky-finger-tip",
 ];
 
-const amicaBones: VRMHumanBoneName[] = [
+const MIYORABones: VRMHumanBoneName[] = [
   "hips",
   "spine",
   "chest",
@@ -361,12 +361,12 @@ export class Viewer {
 
       const hand1 = renderer.xr.getHand(0);
       this.hand1 = hand1;
-      this.hand1.add(handModelFactory.createHandModel(this.hand1,"mesh"))
+      this.hand1.add(handModelFactory.createHandModel(this.hand1, "mesh"))
       scene.add(hand1);
 
       const hand2 = renderer.xr.getHand(1);
       this.hand2 = hand2;
-      this.hand2.add(handModelFactory.createHandModel(this.hand2,"mesh"))
+      this.hand2.add(handModelFactory.createHandModel(this.hand2, "mesh"))
       scene.add(hand2);
 
       // @ts-ignore
@@ -1032,28 +1032,28 @@ export class Viewer {
 
     return parseInt(
       `0x` +
-        [r * 255, g * 255, b * 255]
-          .map(Math.floor)
-          .map((v) => v.toString(16).padStart(2, "0"))
-          .join(""),
+      [r * 255, g * 255, b * 255]
+        .map(Math.floor)
+        .map((v) => v.toString(16).padStart(2, "0"))
+        .join(""),
     );
   }
 
-  // itype: 0 = amica, 1 = room
+  // itype: 0 = MIYORA, 1 = room
   public createBallAtPoint(point: THREE.Vector3, itype: number = 0) {
     return;
     const distance = point.distanceTo(this.camera?.position as THREE.Vector3);
     const s = 5;
     const h = distance * s - Math.floor(distance * s);
 
-    const getAmicaColor = () => {
+    const getMIYORAColor = () => {
       return this.hslToRgb(h, 1, 0.5);
     };
     const getRoomColor = () => {
       return this.hslToRgb(h, 0.1, 0.4);
     };
 
-    const color = itype == 0 ? getAmicaColor() : getRoomColor();
+    const color = itype == 0 ? getMIYORAColor() : getRoomColor();
 
     const ballMaterial = new THREE.MeshBasicMaterial({
       color,
@@ -1124,7 +1124,7 @@ export class Viewer {
         let mindist = Number.MAX_VALUE;
         let closestname = "";
 
-        for (const bone of amicaBones) {
+        for (const bone of MIYORABones) {
           const node = this.model?.vrm?.humanoid.getNormalizedBoneNode(bone);
           if (!node) continue;
 
@@ -1144,7 +1144,7 @@ export class Viewer {
         }
       };
 
-      const handleAmicaIntersection = (point: THREE.Vector3) => {
+      const handleMIYORAIntersection = (point: THREE.Vector3) => {
         highlightClosestBone(point);
       };
 
@@ -1154,12 +1154,12 @@ export class Viewer {
         if (
           this.intersectsModel[0].distance < this.intersectsRoom[0].distance
         ) {
-          handleAmicaIntersection(this.intersectsModel[0].point);
+          handleMIYORAIntersection(this.intersectsModel[0].point);
         } else {
           this.createBallAtPoint(this.intersectsRoom[0].point, 1);
         }
       } else if (this.intersectsModel.length > 0) {
-        handleAmicaIntersection(this.intersectsModel[0].point);
+        handleMIYORAIntersection(this.intersectsModel[0].point);
       } else if (this.intersectsRoom.length > 0) {
         this.createBallAtPoint(this.intersectsRoom[0].point, 1);
       }
@@ -1259,7 +1259,7 @@ export class Viewer {
     //   console.error("scenario update error", e);
     // }
     // this.scenarioMsPanel.update(performance.now() - ptime, 100);
-    
+
     // Temp Disable : WebXR
     // ptime = performance.now();
     // try {
@@ -1337,12 +1337,12 @@ export class Viewer {
 
   public startStreaming(videoElement: HTMLVideoElement) {
     if (!this.renderer) return;
-  
+
     // Create a stream from the renderer's canvas
     const stream = this.renderer.domElement.captureStream(60); // 60 FPS for smooth streaming
 
     this.videoStream = stream;
-  
+
     // Assign the stream to the provided video element for live view
     videoElement.srcObject = stream;
     videoElement.play();
@@ -1358,8 +1358,8 @@ export class Viewer {
     this.videoStream = null; // Clear the stream reference
 
     console.log("Streaming stopped!");
-}
-  
+  }
+
 
   // Method to start recording
   public startRecording() {
@@ -1367,7 +1367,7 @@ export class Viewer {
 
     // Create a stream from the renderer's canvas
     const stream = this.renderer.domElement.captureStream(60); // 30 FPS
-    
+
     // Higher quality and bit rate for better video clarity
     const options = {
       mimeType: 'video/webm;codecs=vp9',

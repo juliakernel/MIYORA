@@ -9,11 +9,11 @@ import { cleanTranscript, cleanFromPunctuation, cleanFromWakeWord } from "@/util
 import { hasOnScreenKeyboard } from "@/utils/hasOnScreenKeyboard";
 import { AlertContext } from "@/features/alert/alertContext";
 import { ChatContext } from "@/features/chat/chatContext";
-import { openaiWhisper  } from "@/features/openaiWhisper/openaiWhisper";
-import { whispercpp  } from "@/features/whispercpp/whispercpp";
+import { openaiWhisper } from "@/features/openaiWhisper/openaiWhisper";
+import { whispercpp } from "@/features/whispercpp/whispercpp";
 import { config } from "@/utils/config";
 import { WaveFile } from "wavefile";
-import { AmicaLifeContext } from "@/features/amicaLife/amicaLifeContext";
+import { MIYORALifeContext } from "@/features/MIYORALife/MIYORALifeContext";
 import { AudioControlsContext } from "@/features/moshi/components/audioControlsContext";
 
 
@@ -36,9 +36,9 @@ export default function MessageInput({
   const [whisperCppOutput, setWhisperCppOutput] = useState<any | null>(null);
   const { chat: bot } = useContext(ChatContext);
   const { alert } = useContext(AlertContext);
-  const { amicaLife } = useContext(AmicaLifeContext);
+  const { MIYORALife } = useContext(MIYORALifeContext);
   const { audioControls: moshi } = useContext(AudioControlsContext);
-  const [ moshiMuted, setMoshiMuted] = useState(moshi.isMuted());
+  const [moshiMuted, setMoshiMuted] = useState(moshi.isMuted());
 
   const vad = useMicVAD({
     startOnLoad: false,
@@ -129,21 +129,21 @@ export default function MessageInput({
     if (wakeWordEnabled) {
       // Text start with wake word
       if (textStartsWithWakeWord) {
-        // Pause amicaLife and update bot's awake status when speaking
-        if (config("amica_life_enabled") === "true") {
-          amicaLife.pause();
+        // Pause MIYORALife and update bot's awake status when speaking
+        if (config("MIYORA_life_enabled") === "true") {
+          MIYORALife.pause();
         }
         bot.updateAwake();
-      // Case text doesn't start with wake word and not receive trigger message in amica life
+        // Case text doesn't start with wake word and not receive trigger message in MIYORA life
       } else {
-        if (config("amica_life_enabled") === "true" && amicaLife.triggerMessage !== true && !bot.isAwake()) {
+        if (config("MIYORA_life_enabled") === "true" && MIYORALife.triggerMessage !== true && !bot.isAwake()) {
           bot.updateAwake();
         }
       }
     } else {
       // If wake word off, update bot's awake when speaking
-      if (config("amica_life_enabled") === "true") {
-        amicaLife.pause();
+      if (config("MIYORA_life_enabled") === "true") {
+        MIYORALife.pause();
         bot.updateAwake();
       }
     }
@@ -156,8 +156,8 @@ export default function MessageInput({
 
     if (config("autosend_from_mic") === 'true') {
       if (!wakeWordEnabled || bot.isAwake()) {
-        bot.receiveMessageFromUser(text,false);
-      } 
+        bot.receiveMessageFromUser(text, false);
+      }
     } else {
       setUserMessage(text);
     }
@@ -165,18 +165,18 @@ export default function MessageInput({
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    onChangeUserMessage(event); 
-  
-    // Pause amicaLife and update bot's awake status when typing
-    if (config("amica_life_enabled") === "true") {
-      amicaLife.pause();
+    onChangeUserMessage(event);
+
+    // Pause MIYORALife and update bot's awake status when typing
+    if (config("MIYORA_life_enabled") === "true") {
+      MIYORALife.pause();
       bot.updateAwake();
     }
   }
 
   // for whisper_browser
   useEffect(() => {
-    if (transcriber.output && ! transcriber.isBusy) {
+    if (transcriber.output && !transcriber.isBusy) {
       const output = transcriber.output?.text;
       handleTranscriptionResult(output);
     }
@@ -199,10 +199,10 @@ export default function MessageInput({
   }, [whisperCppOutput]);
 
   function clickedSendButton() {
-    bot.receiveMessageFromUser(userMessage,false);
+    bot.receiveMessageFromUser(userMessage, false);
     // only if we are using non-VAD mode should we focus on the input
-    if (! vad.listening) {
-      if (! hasOnScreenKeyboard()) {
+    if (!vad.listening) {
+      if (!hasOnScreenKeyboard()) {
         inputRef.current?.focus();
       }
     }
@@ -217,23 +217,23 @@ export default function MessageInput({
             <div className='flex flex-col justify-center items-center'>
               {config("chatbot_backend") === "moshi" ? (
                 <IconButton
-                iconName={!moshiMuted ? "24/PauseAlt" : "24/Microphone"}
-                className="bg-secondary hover:bg-secondary-hover active:bg-secondary-press disabled:bg-secondary-disabled"
-                isProcessing={moshiMuted && moshi.getRecorder() != null}
-                disabled={!moshi.getRecorder()}
-                onClick={() => {
-                  moshi.toggleMute();
-                  setMoshiMuted(!moshiMuted);
-                }}
-              />
+                  iconName={!moshiMuted ? "24/PauseAlt" : "24/Microphone"}
+                  className="bg-secondary hover:bg-secondary-hover active:bg-secondary-press disabled:bg-secondary-disabled"
+                  isProcessing={moshiMuted && moshi.getRecorder() != null}
+                  disabled={!moshi.getRecorder()}
+                  onClick={() => {
+                    moshi.toggleMute();
+                    setMoshiMuted(!moshiMuted);
+                  }}
+                />
               ) : (
                 <IconButton
-                iconName={vad.listening ? "24/PauseAlt" : "24/Microphone"}
-                className="bg-secondary hover:bg-secondary-hover active:bg-secondary-press disabled:bg-secondary-disabled"
-                isProcessing={vad.userSpeaking}
-                disabled={config('stt_backend') === 'none' || vad.loading || Boolean(vad.errored)}
-                onClick={vad.toggle}
-              />
+                  iconName={vad.listening ? "24/PauseAlt" : "24/Microphone"}
+                  className="bg-secondary hover:bg-secondary-hover active:bg-secondary-press disabled:bg-secondary-disabled"
+                  isProcessing={vad.userSpeaking}
+                  disabled={config('stt_backend') === 'none' || vad.loading || Boolean(vad.errored)}
+                  onClick={vad.toggle}
+                />
               )}
             </div>
           </div>

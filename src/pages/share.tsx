@@ -177,7 +177,7 @@ export default function Share() {
   }, []);
 
   return (
-    
+
     <div className="p-10 md:p-20">
       <style jsx global>
         {`
@@ -191,11 +191,11 @@ export default function Share() {
       </style>
       <div className="fixed top-0 left-0 w-full max-h-full text-black text-xs text-left z-20">
         <div className="p-2 bg-white">
-            <IconButton
-              iconName="24/Close"
-              isProcessing={false}
-              className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active"
-              onClick={handleCloseIcon}/>
+          <IconButton
+            iconName="24/Close"
+            isProcessing={false}
+            className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active"
+            onClick={handleCloseIcon} />
         </div>
       </div>
       <div className="col-span-3 max-w-md rounded-xl mt-4">
@@ -595,11 +595,11 @@ export default function Share() {
                 {t("Or, you can share this direct link:")}
                 {' '}
                 <Link
-                  href={`https://amica.arbius.ai/import/${sqid}`}
+                  href={`https://MIYORA.arbius.ai/import/${sqid}`}
                   target={isTauri() ? "_blank" : ''}
                   className="text-cyan-600 hover:text-cyan-700"
                 >
-                  https://amica.arbius.ai/import/{sqid}
+                  https://MIYORA.arbius.ai/import/{sqid}
                 </Link>
               </p>
 

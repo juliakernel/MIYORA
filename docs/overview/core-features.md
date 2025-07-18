@@ -3,7 +3,7 @@ title: Core Features
 order: 2
 ---
 
-Below you'll find a glossary of the main Amica concepts.
+Below you'll find a glossary of the main MIYORA concepts.
 
 ## Transcription Module
 

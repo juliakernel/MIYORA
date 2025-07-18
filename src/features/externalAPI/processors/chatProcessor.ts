@@ -8,7 +8,7 @@ export const processNormalChat = async (message: string): Promise<string> => {
   return await askLLM(config("system_prompt"), message, null);
 };
 
-export const triggerAmicaActions = async (payload: any) => {
+export const triggerMIYORAActions = async (payload: any) => {
   const { text, socialMedia, playback, reprocess, animation } = payload;
 
   if (text) {
@@ -28,8 +28,8 @@ export const triggerAmicaActions = async (payload: any) => {
 };
 
 export const updateSystemPrompt = async (payload: any): Promise<any> => {
-    const { prompt } = payload;
-    let response = sendToClients({ type: "systemPrompt", data: prompt });
-    return response;
-  };
-  
+  const { prompt } = payload;
+  let response = sendToClients({ type: "systemPrompt", data: prompt });
+  return response;
+};
+

@@ -3,7 +3,7 @@ title: Using SpeechT5
 order: 11
 ---
 
-SpeechT5 is a built-in text-to-speech (TTS) service that runs in the browser (Well, on Amica at least). It is free and relatively fast.
+SpeechT5 is a built-in text-to-speech (TTS) service that runs in the browser (Well, on MIYORA at least). It is free and relatively fast.
 
 Make sure SpeechT5 is enabled for TTS:
 

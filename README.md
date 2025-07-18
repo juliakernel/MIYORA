@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="https://amica.arbius.ai/ogp.png" width="600" style="margin-bottom: 0.2;"/>
+    <img src="https://MIYORA.arbius.ai/ogp.png" width="600" style="margin-bottom: 0.2;"/>
 </p>
 
-<h2 align="center"><a href="https://amica.arbius.ai">Amica: Your friendly personal AI</a></h2>
+<h2 align="center"><a href="https://MIYORA.arbius.ai">MIYORA: Your friendly personal AI</a></h2>
 
 
 <h5 align="center"> If you like our project, please give us a star ⭐ on GitHub.</h2>
@@ -11,22 +11,22 @@
 <h5 align="center">
 
 [![twitter](https://img.shields.io/badge/Twitter%20-black)](https://twitter.com/arbius_ai)
-[![License](https://img.shields.io/github/license/semperai/amica)](https://github.com/semperai/amica/blob/main/LICENSE)
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsemperai%2Famica&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-[![GitHub issues](https://img.shields.io/github/issues/semperai/amica?color=critical&label=Issues)](https://github.com/semperai/amica/issues?q=is%3Aopen+is%3Aissue)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/semperai/amica?color=success&label=Issues)](https://github.com/semperai/amica/issues?q=is%3Aissue+is%3Aclosed)
+[![License](https://img.shields.io/github/license/semperai/MIYORA)](https://github.com/semperai/MIYORA/blob/main/LICENSE)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsemperai%2FMIYORA&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+[![GitHub issues](https://img.shields.io/github/issues/semperai/MIYORA?color=critical&label=Issues)](https://github.com/semperai/MIYORA/issues?q=is%3Aopen+is%3Aissue)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/semperai/MIYORA?color=success&label=Issues)](https://github.com/semperai/MIYORA/issues?q=is%3Aissue+is%3Aclosed)
 
 </h5>
 
-Amica allows you to converse with highly customizable 3D characters that can communicate via natural voice chat and vision, with an emotion engine that allows Amica to express feelings and more. Customize her any way you want with any AI technology.
+MIYORA allows you to converse with highly customizable 3D characters that can communicate via natural voice chat and vision, with an emotion engine that allows MIYORA to express feelings and more. Customize her any way you want with any AI technology.
 
-[Try Amica here on mobile, tablet or desktop](https://amica.arbius.ai)
+[Try MIYORA here on mobile, tablet or desktop](https://MIYORA.arbius.ai)
 
-> **For Windows Users**: Please create a new folder for Amica during installation to prevent the unintentional deletion of other files during uninstallation.
+> **For Windows Users**: Please create a new folder for MIYORA during installation to prevent the unintentional deletion of other files during uninstallation.
 
 <p align="center"><a href="https://github.com/flukexp/llama-piper-go/releases/download/v1.0.0/llama-piper-window.exe"><img src="https://img.shields.io/badge/Download%20for%20Windows%20-green?style=for-the-badge&logo=windows" /></a>
 
-We just released Amica 1.2 with lots of new features. [Docs](https://docs.heyamica.com/) will be further updated soon, **watch the video to learn about what Amica 1.2 offers:**
+We just released MIYORA 1.2 with lots of new features. [Docs](https://docs.heyMIYORA.com/) will be further updated soon, **watch the video to learn about what MIYORA 1.2 offers:**
 
 [![Video Title](https://img.youtube.com/vi/3zCN2IlxHrU/0.jpg)](https://www.youtube.com/watch?v=3zCN2IlxHrU)
 
@@ -35,9 +35,9 @@ You can import VRM files, adjust the voice to fit the character, and generate re
 
 </p>
 
-The various features of Amica mainly use and support the following technologies:
+The various features of MIYORA mainly use and support the following technologies:
 
-> To see tutorials on configuring any of these with Amica please visit the [official Amica documentation](https://docs.heyamica.com/).
+> To see tutorials on configuring any of these with MIYORA please visit the [official MIYORA documentation](https://docs.heyMIYORA.com/).
 
 - 3D Rendering
   - [three.js](https://threejs.org/)
@@ -72,7 +72,7 @@ The various features of Amica mainly use and support the following technologies:
 To run this project locally, clone or download the repository.
 
 ```bash
-git clone git@github.com:semperai/amica.git
+git clone git@github.com:semperai/MIYORA.git
 ```
 
 Install the required packages.
@@ -104,7 +104,7 @@ To use OpenRouter as a chat backend, set the following environment variables in 
 - `NEXT_PUBLIC_OPENROUTER_MODEL`: Default OpenRouter model (optional, defaults to openai/gpt-3.5-turbo)
 
 ```bash
-amica
+MIYORA
 ├── .env.local
 ├── src
 │   ├── utils
@@ -113,7 +113,7 @@ amica
 
 ### 📦 Desktop Application
 
-Amica uses [Tauri](https://tauri.app/) to build the desktop application.
+MIYORA uses [Tauri](https://tauri.app/) to build the desktop application.
 
 To develop the desktop application, use the following command:
 
@@ -123,7 +123,7 @@ npm run tauri dev
 
 ## 📖 Documentation
 
-View the [documentation](https://docs.heyamica.com) for more information on how to configure and use Amica.
+View the [documentation](https://docs.heyMIYORA.com) for more information on how to configure and use MIYORA.
 
 ## 📜 History
 
@@ -132,15 +132,15 @@ This project originated as a fork of ChatVRM by Pixiv:
 [https://pixiv.github.io/ChatVRM](https://pixiv.github.io/ChatVRM)
 
 ## 🔒 License
-* The majority of this project is released under the MIT license as found in the [LICENSE](https://github.com/semperai/amica/blob/master/LICENSE) file.
+* The majority of this project is released under the MIT license as found in the [LICENSE](https://github.com/semperai/MIYORA/blob/master/LICENSE) file.
 * Assets such as 3D models and images are released under their authors respective licenses.
 
 
 ## ✨ Star History
-[![Star History](https://api.star-history.com/svg?repos=semperai/amica&type=Date)](https://star-history.com/#semperai/amica&Date)
+[![Star History](https://api.star-history.com/svg?repos=semperai/MIYORA&type=Date)](https://star-history.com/#semperai/MIYORA&Date)
 
 ## 🤗 Contributors
 
-<a href="https://github.com/semperai/amica/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=semperai/amica" />
+<a href="https://github.com/semperai/MIYORA/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=semperai/MIYORA" />
 </a>

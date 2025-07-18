@@ -6,7 +6,7 @@ order: 1
 ## Step 1: Clone the repo
 
 ```sh
-git clone https://github.com/semperai/amica.git
+git clone https://github.com/semperai/MIYORA.git
 ```
 
 ## Step 2: Install dependencies
@@ -27,11 +27,11 @@ npm run dev # To start
 from the root directory
 
 
-## Developing Amica
+## Developing MIYORA
 
 ### Developing
 
-To develop amica, run the `dev` command in your console:
+To develop MIYORA, run the `dev` command in your console:
 
 ```sh
 npm run dev

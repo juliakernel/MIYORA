@@ -1,9 +1,9 @@
 ---
-title: Developing Amica
+title: Developing MIYORA
 order: 3
 ---
 
-Once you've [set up your developer environment](./setup-dev-env.md), you're ready to hack on Amica!
+Once you've [set up your developer environment](./setup-dev-env.md), you're ready to hack on MIYORA!
 
 ## Tests
 
@@ -46,11 +46,11 @@ export function MyComponent() {
   return <p>{t('my translated text')}</p>
 
   // When translating text that is too lengthy, it's best to assign a corresponding keyword.
-  <p>{t("amica_intro", `
-    Amica is an open source chatbot interface that provides emotion, text to speech, and speech to text capabilities.
+  <p>{t("MIYORA_intro", `
+    MIYORA is an open source chatbot interface that provides emotion, text to speech, and speech to text capabilities.
     It is designed to be able to be attached to any ChatBot API.
     It can be used with any VRM model and is very customizable.
-    You can even run Amica on your own computer without an internet connection, or on your phone.
+    You can even run MIYORA on your own computer without an internet connection, or on your phone.
   `)}
   </p>
 

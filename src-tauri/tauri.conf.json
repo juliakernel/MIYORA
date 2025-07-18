@@ -7,7 +7,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "amica",
+    "productName": "MIYORA",
     "version": "0.2.1"
   },
   "tauri": {
@@ -32,7 +32,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.heyamica.dev",
+      "identifier": "com.heyMIYORA.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": "Release.entitlements",
@@ -67,7 +67,7 @@
         "height": 600,
         "fullscreen": false,
         "resizable": true,
-        "title": "Amica",
+        "title": "MIYORA",
         "transparent": true,
         "visible": false,
         "label": "main"

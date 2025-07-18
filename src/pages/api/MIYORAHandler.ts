@@ -5,12 +5,12 @@ import { handleConfig, handleSubconscious } from "@/features/externalAPI/externa
 
 import { generateSessionId, sendError, apiLogEntry, ApiResponse } from "@/features/externalAPI/utils/apiHelper";
 import { requestMemory, requestLogs, requestUserInputMessages, requestChatHistory } from "@/features/externalAPI/utils/requestHandler";
-import { processNormalChat, triggerAmicaActions, updateSystemPrompt } from "@/features/externalAPI/processors/chatProcessor";
+import { processNormalChat, triggerMIYORAActions, updateSystemPrompt } from "@/features/externalAPI/processors/chatProcessor";
 
 export const apiLogs: apiLogEntry[] = [];
 export const sseClients: Array<{ res: NextApiResponse }> = [];
 
-// Main Amica Handler
+// Main MIYORA Handler
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ApiResponse>
@@ -37,10 +37,10 @@ export default async function handler(
 
   try {
     const { response, outputType } = await processRequest(inputType, payload);
-    apiLogs.push({sessionId: currentSessionId,timestamp,inputType,outputType,response,});
+    apiLogs.push({ sessionId: currentSessionId, timestamp, inputType, outputType, response, });
     res.status(200).json({ sessionId: currentSessionId, outputType, response });
   } catch (error) {
-    apiLogs.push({sessionId: sessionId,timestamp,inputType,outputType: "Error",error: String(error)});
+    apiLogs.push({ sessionId: sessionId, timestamp, inputType, outputType: "Error", error: String(error) });
     sendError(res, currentSessionId, String(error), 500);
   }
 }
@@ -62,7 +62,7 @@ const processRequest = async (inputType: string, payload: any) => {
     case "Chat History":
       return { response: await requestChatHistory(), outputType: "Chat History" };
     case "Reasoning Server":
-      return { response: await triggerAmicaActions(payload), outputType: "Actions" };
+      return { response: await triggerMIYORAActions(payload), outputType: "Actions" };
     default:
       throw new Error("Invalid input type");
   }

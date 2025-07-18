@@ -6,11 +6,11 @@ order: 1
 # API Route Documentation
 
 
-Welcome to the Amica API Documentation. Amica is a powerful 3D VRM (Virtual Reality Model) agent interface and hub that allows users to connect with external web services and agent AI frameworks, enabling seamless remote control and puppetry of the VRM characters. With Amica, you can create interactive agents that serve as dynamic 3D character interfaces for AI agents, applications and users.
+Welcome to the MIYORA API Documentation. MIYORA is a powerful 3D VRM (Virtual Reality Model) agent interface and hub that allows users to connect with external web services and agent AI frameworks, enabling seamless remote control and puppetry of the VRM characters. With MIYORA, you can create interactive agents that serve as dynamic 3D character interfaces for AI agents, applications and users.
 
-The Amica API provides a set of flexible and robust routes for interacting with Amica’s system, including functions like real-time client connections, memory retrieval, system updates, social media integration, and more. These capabilities enable you to build custom logic, including reasoning, tool use (such as [EACC Marketplace](https://docs.effectiveacceleration.ai/) functions) and memory management, on external servers.
+The MIYORA API provides a set of flexible and robust routes for interacting with MIYORA’s system, including functions like real-time client connections, memory retrieval, system updates, social media integration, and more. These capabilities enable you to build custom logic, including reasoning, tool use (such as [EACC Marketplace](https://docs.effectiveacceleration.ai/) functions) and memory management, on external servers.
 
-Whether you're using Amica to handle real-time interactions or to trigger complex actions based on user input, this documentation will guide you through the supported API routes, input types, and examples. Use Amica’s APIs to bring your 3D agents to life with rich functionality and integration.
+Whether you're using MIYORA to handle real-time interactions or to trigger complex actions based on user input, this documentation will guide you through the supported API routes, input types, and examples. Use MIYORA’s APIs to bring your 3D agents to life with rich functionality and integration.
 
 This documentation will help you get started with the following key features:
 
@@ -25,17 +25,17 @@ This documentation will help you get started with the following key features:
 - Data Handling: Retrieve and update server-side data via simple file-based operations. (Coming soon)
 
 
-Dive in and start integrating Amica’s capabilities into your applications!
+Dive in and start integrating MIYORA’s capabilities into your applications!
 
 --- 
 
 
-## Setting up Amica's External API
-> To use the External API, you MUST set up [running Amica locally](https://docs.heyamica.com/getting-started/installation) on your own computer or server. This also ensures localized database design is kept for people hosting their own Amicas.
+## Setting up MIYORA's External API
+> To use the External API, you MUST set up [running MIYORA locally](https://docs.heyMIYORA.com/getting-started/installation) on your own computer or server. This also ensures localized database design is kept for people hosting their own MIYORAs.
 
-Once it is running locally, all the api routes can be called directly to the Amica server.
+Once it is running locally, all the api routes can be called directly to the MIYORA server.
 
-## Route: `/api/amicaHandler`
+## Route: `/api/MIYORAHandler`
 
 This API route handles multiple types of requests, including social media integration, system prompt updates, memory requests, and real-time client connections via Server-Sent Events (SSE). It ensures robust logging and provides error handling for incoming requests.
 
@@ -46,9 +46,9 @@ This API route handles multiple types of requests, including social media integr
 
 ## Input Types
 
-### 1. **Normal Chat Message**: Retrieve normal chat response from Amica LLM without make avatar speaking.
+### 1. **Normal Chat Message**: Retrieve normal chat response from MIYORA LLM without make avatar speaking.
 
-*Example Usage: Use the Amica's paired LLM for conversation retrieval without making the avatar speak.*
+*Example Usage: Use the MIYORA's paired LLM for conversation retrieval without making the avatar speak.*
 
 #### JSON Input Example
 
@@ -73,7 +73,7 @@ This API route handles multiple types of requests, including social media integr
 
 ### 2. **Memory Request**: Fetches memory data (Subconscious stored prompt).
 
-*Example Usage: Fetch Amica's subconcious thoughts from the user's conversations.*
+*Example Usage: Fetch MIYORA's subconcious thoughts from the user's conversations.*
 
 #### JSON Input Example
 
@@ -100,7 +100,7 @@ This API route handles multiple types of requests, including social media integr
 
 ### 3. **RPC Logs**: Fetches logs.
 
-*Example Usage: Build a interface that logs what Amica is doing.*
+*Example Usage: Build a interface that logs what MIYORA is doing.*
 
 #### JSON Input Example
 
@@ -149,8 +149,8 @@ This API route handles multiple types of requests, including social media integr
   "outputType": "User Input",
   "response": [
     {
-      "systemPrompt": "Assume the persona of Amica, a feisty human with extraordinary intellectual capabilities but a notably unstable emotional spectrum. ",
-      "message": "Hello, Nice to meet you Amica!"
+      "systemPrompt": "Assume the persona of MIYORA, a feisty human with extraordinary intellectual capabilities but a notably unstable emotional spectrum. ",
+      "message": "Hello, Nice to meet you MIYORA!"
     }
   ]
 }
@@ -158,7 +158,7 @@ This API route handles multiple types of requests, including social media integr
 
 ### 5. **Update System Prompt**: Updates the system prompt.
 
-*Example Usage: Use this to change Amica's system prompt based on external reasoning server*
+*Example Usage: Use this to change MIYORA's system prompt based on external reasoning server*
 
 #### JSON Input Example
 
@@ -217,7 +217,7 @@ This API route handles multiple types of requests, including social media integr
 
 ### 7. **Chat History**: Fetches chat history.
 
-*Example Usage: Track the user's conversation history with Amica and process it.*
+*Example Usage: Track the user's conversation history with MIYORA and process it.*
 
 #### JSON Input Example
 
@@ -236,7 +236,7 @@ This API route handles multiple types of requests, including social media integr
   "response": [
     {
       "role": "user",
-      "content": "[neutral] Hello, Nice to meet you Amica!"
+      "content": "[neutral] Hello, Nice to meet you MIYORA!"
     },
     {
       "role": "assistant",
@@ -354,14 +354,14 @@ Logs each request with:
 
 This API route is used to retrieve and update client-side information through server-side operations. Since the application cannot directly update or retrieve data from the server side, these operations involve writing and reading data from static files that are continuously updated.
 
-The primary purpose of this route is to utilize the data written to files for operations performed in the /api/mediaHandler and /api/amicaHandler routes.
+The primary purpose of this route is to utilize the data written to files for operations performed in the /api/mediaHandler and /api/MIYORAHandler routes.
 
 ### File Paths
 
 1. **`config.json`**
 
    - **Path**: `src/features/externalAPI/dataHandlerStorage/config.json`
-   - **Description**: Contains the configuration data used throughout the application. This file is read and updated dynamically by the API.
+   - **Description**: Contains the configuration data used throughout the application. This file is read and updated dynMIYORAlly by the API.
 
 2. **`subconscious.json`**
 
