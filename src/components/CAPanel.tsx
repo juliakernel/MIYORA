@@ -8,7 +8,7 @@ interface CAPanelProps {
 export const CAPanel: React.FC<CAPanelProps> = ({ className = '' }) => {
     const [copied, setCopied] = useState(false);
 
-    const contractAddress = "3qpQBJmoZeah2ZuQu6Kp18azMch6KM5aPCCsCiUCbonk";
+    const contractAddress = "COMING SOON";
 
     const caText = `MIYORA Token Contract Address:
 
