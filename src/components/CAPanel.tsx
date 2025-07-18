@@ -44,23 +44,20 @@ ${contractAddress}`;
     };
 
     return (
-        <div className="space-y-4">
-            <div className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl p-4">
-                <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white/70">Contract Address:</span>
-                    <button
-                        onClick={() => handleCopyAddress(contractAddress, 'main')}
-                        data-network="main"
-                        className="text-blue-400 hover:text-blue-300 text-xs transition-colors px-2 py-1 rounded-md hover:bg-white/10"
-                    >
-                        Copy
-                    </button>
-                </div>
-                <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-3">
-                    <span className="font-mono text-sm text-white/90 break-all select-all">
-                        {contractAddress}
-                    </span>
-                </div>
+        <div className={`backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-4 ${className}`}>
+            <div className="flex items-center gap-3">
+                <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
+                <span className="font-mono text-sm text-white/90 select-all">
+                    CA: {contractAddress}
+                </span>
+                <button
+                    onClick={() => handleCopyAddress(contractAddress, 'main')}
+                    data-network="main"
+                    className="text-blue-400 hover:text-blue-300 text-xs transition-colors px-2 py-1 rounded-md hover:bg-white/10 flex items-center gap-1"
+                >
+                    <span>Copy</span>
+                    <ClipboardDocumentIcon className="w-4 h-4" />
+                </button>
             </div>
         </div>
     );

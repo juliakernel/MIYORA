@@ -30,7 +30,7 @@ export const MessageInputContainer = ({
 
   return (
     <>
-      <div className="fixed bottom-20 z-20 w-full">
+      <div className="fixed top-4 z-20 w-full">
         <div className="mx-auto max-w-4xl p-2">
           <CAPanel className="mb-2" />
         </div>
