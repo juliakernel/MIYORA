@@ -44,7 +44,7 @@ ${contractAddress}`;
     };
 
     return (
-        <div className={`backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-4 ${className}`}>
+        <div className={`backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-4 w-fit ${className}`}>
             <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse"></div>
                 <span className="font-mono text-sm text-white/90 select-all">

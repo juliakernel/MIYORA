@@ -30,10 +30,8 @@ export const MessageInputContainer = ({
 
   return (
     <>
-      <div className="fixed top-4 z-20 w-full">
-        <div className="mx-auto max-w-4xl p-2">
-          <CAPanel className="mb-2" />
-        </div>
+      <div className="fixed top-4 z-20 left-1/2 transform -translate-x-1/2">
+        <CAPanel className="mb-2" />
       </div>
       <DynamicMessageInput
         userMessage={userMessage}
